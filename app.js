@@ -102,6 +102,11 @@ app.use((req, res, next) => {
 //   res.send(registeredUser);
 // });
 
+//root
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
+
 // router
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews",reviewRouter);
@@ -124,6 +129,3 @@ app.listen(port, () => {
   console.log(`Server is listening to port ${port}`);
 });
 
-app.get("/", (req, res) => {
-  res.redirect("/listings");
-});
