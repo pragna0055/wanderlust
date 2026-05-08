@@ -5,6 +5,11 @@ const mapToken=process.env.MAP_TOKEN;
 const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 
+if (!mapToken) {
+  throw new Error("MAP_TOKEN is missing");
+}
+
+
 // INDEX
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
