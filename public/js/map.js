@@ -1,6 +1,10 @@
 mapboxgl.accessToken = mapToken;
 
-const coordinates = listingData.geometry.coordinates;
+// Safe fallback in case geometry is missing
+const coordinates =
+  listingData.geometry && listingData.geometry.coordinates
+    ? listingData.geometry.coordinates
+    : [77.5946, 12.9716]; // Bengaluru fallback
 
 const map = new mapboxgl.Map({
   container: "map",
